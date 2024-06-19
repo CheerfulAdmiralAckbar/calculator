@@ -54,8 +54,8 @@
   align-items: center;
   justify-content: space-between;
   margin: auto;
-  width: 350px;
-  height: 500px;
+  width: 320px;
+  height: 365px;
   background: #2a2a32;
   color: white;
   padding: 15px;
@@ -94,7 +94,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  gap: 10px;
+  gap: 13px;
 }
 
 button {
