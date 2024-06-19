@@ -26,25 +26,14 @@ function App() {
     "Ans",
     "=",
   ];
-  const buttons = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "0",
-    "-",
-    "+",
-    "*",
-    "/",
-  ];
-  const hello = [1, 2, 3, 4, 5];
 
   const handleClick = (string) => {
+    if (string === "AC") {
+      setSum([]);
+      return;
+    }
+    let storedEval = [...sum, string];
+    setSum(storedEval);
     // if user enters =
     // pass the sum into the evalute function
     // setSum the response so it replaces the screen with the result
@@ -53,7 +42,7 @@ function App() {
   return (
     <>
       <div className="calculator">
-        <div className="calculator-screen">245245 42 World</div>
+        <div className="calculator-screen">{sum}</div>
         <div className="calculator-buttons">
           {simpleButtons.map((simpleButton, index) => {
             return (
