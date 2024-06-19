@@ -3,7 +3,7 @@ import { evaluate } from "mathjs";
 import "./App.css";
 
 function App() {
-  const [sum, setSum] = useState("");
+  const [sum, setSum] = useState([]); // Initialize sum as an array
   const [lastResult, setLastResult] = useState(null);
   const simpleButtons = [
     "7",
@@ -51,18 +51,17 @@ function App() {
           .join("");
         const result = evaluate(sumString);
         console.log(result);
-        setSum([result]);
+        setSum(result.toString().split(""));
         setLastResult(result);
         break;
       case "Ans":
         if (lastResult !== null) {
-          let storedEval = [...sum, lastResult];
+          let storedEval = [...sum, ...lastResult.toString().split("")];
           setSum(storedEval);
-          console.log(sum);
         }
         break;
       default:
-        let storedEval = [...sum, string];
+        let storedEval = [...sum, string]; // Add string to sum
         setSum(storedEval);
         break;
     }
@@ -71,7 +70,7 @@ function App() {
   return (
     <>
       <div className="calculator">
-        <div className="calculator-screen">{sum}</div>
+        <div className="calculator-screen">{sum.join("")}</div>{" "}
         <div className="calculator-buttons">
           {simpleButtons.map((simpleButton, index) => {
             return (
