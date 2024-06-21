@@ -40,28 +40,34 @@ function App() {
     // else it uses the default which just adds the value of string to sum
     switch (string) {
       case "AC":
+        // Clears sum
         setSum([]);
         break;
       case "DEL":
+        // Deletes last item in array (most recent button pressed)
         setSum(sum.slice(0, -1));
         break;
       case "=":
+        // convert array to string for evaluate
         const sumString = sum
           .map((item) => operatorMapping[item] || item)
           .join("");
         const result = evaluate(sumString);
         console.log(result);
         setSum(result.toString().split(""));
+        // Set answer as last result for Ans
         setLastResult(result);
         break;
       case "Ans":
+        // Gets last evaluation and adds it into the sum array
         if (lastResult !== null) {
           let storedEval = [...sum, ...lastResult.toString().split("")];
           setSum(storedEval);
         }
         break;
       default:
-        let storedEval = [...sum, string]; // Add string to sum
+        // If the button is none of the above, just simply add it into the array.
+        let storedEval = [...sum, string];
         setSum(storedEval);
         break;
     }
